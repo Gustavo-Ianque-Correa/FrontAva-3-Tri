@@ -44,13 +44,17 @@ const calcBtn = document.querySelector("#calc-btn");
 const clearBtn = document.querySelector("#clear-btn");
 
 
-const calcContainer = document.querySelector("#calc-container");
-const resultContainer = document.querySelector("#result-container");
+const calcContainer = document.getElementById("calc-container");
+const resultContainer = document.getElementById("result-container");
 
 const imcNumber = document.querySelector("#imc-number span");
 const imcInfo = document.querySelector("#imc-info span");
 
 const backBtn = document.querySelector("#back-btn");
+
+resultContainer.style.display = "none";
+calcContainer.style.display = "block";
+
 
 // Funções
 function createTable(data) {
@@ -85,6 +89,19 @@ function calcImc(heightInput, weightInput) {
 }
 
 
+function mostra() {
+
+  if (resultContainer.style.display == "none") {
+    calcContainer.style.display = "none";
+    resultContainer.style.display = "block";
+  } else {
+    resultContainer.style.display = "none"
+    calcContainer.style.display = "block";
+  }
+
+}
+
+
 
 // Init
 createTable(data);
@@ -105,7 +122,6 @@ calcBtn.addEventListener("click", (e) => {
 
   heightInput = document.querySelector("#height").value;
   weightInput = document.querySelector("#width").value;
-
 
   heightInput = heightInput / 100
 
@@ -149,7 +165,7 @@ calcBtn.addEventListener("click", (e) => {
       imcInfo.classList.add("high");
       break;
   }
-
+  mostra()
 
 });
 
@@ -171,6 +187,8 @@ function cleanInputs() {
   imcNumber.className = "";
   imcInfo.className = "";
 }
+
+
 //näo sei como ta funcionando, muito dificil esse codigo0
 
 
